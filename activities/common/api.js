@@ -49,7 +49,7 @@ api.convertProjects = function (response) {
   // iterate through each issue and extract id, title, etc. into a new array
   for (let i = 0; i < data.length; i++) {
     let raw = data[i];
-    let item = { id: raw.id, title: raw.name, description: raw.name, link: raw.web_url, raw: raw }
+    let item = { id: raw.id, title: raw.name, description: raw.name, link: `https://app.asana.com/0/${raw.id}`  , raw: raw }
     items.push(item);
   }
 
