@@ -1,6 +1,6 @@
 ServiceName: 'ping'
-InterfaceName: 'items'
-Description: 'ping'
+InterfaceName: 'ping'
+Description: 'Ping'
 APIDoc: ''
 Interfaces: 'search,pagination'
 RequiredScopes: ''
