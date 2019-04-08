@@ -33,7 +33,7 @@ function api(path, opts) {
     return got.stream(url, opts);
   }
 
-  return got(url, opts).catch(err => {
+  return got(url, opts).catch((err) => {
     throw err;
   });
 }
@@ -47,7 +47,7 @@ const helpers = [
   'delete'
 ];
 
-api.stream = (url, opts) => apigot(url, Object.assign({}, opts, {
+api.stream = (url, opts) => got(url, Object.assign({}, opts, {
   json: false,
   stream: true
 }));
