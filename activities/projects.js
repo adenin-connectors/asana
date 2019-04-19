@@ -3,13 +3,14 @@ const api = require('./common/api');
 
 module.exports = async function (activity) {
   try {
+    api.initialize(activity);
     const response = await api('/projects');
 
-    if (Activity.isErrorResponse(response)) return;
+    if ($.isErrorResponse(activity,response)) return;
 
     activity.Response.Data = convertProjects(response);
   } catch (error) {
-    Activity.handleError(error);
+    $.handleError(activity,error);
   }
 };
 
@@ -20,7 +21,13 @@ function convertProjects(response) {
 
   for (let i = 0; i < data.length; i++) {
     let raw = data[i];
-    let item = { id: raw.id, title: raw.name, description: raw.name, link: `https://app.asana.com/0/${raw.id}`, raw: raw }
+    let item = {
+      id: raw.id,
+      title: raw.name,
+      description: raw.name,
+      link: `https://app.asana.com/0/${raw.id}`,
+      raw: raw
+    };
     items.push(item);
   }
 
